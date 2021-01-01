@@ -70,7 +70,8 @@ fn on_message_create(mut client vd.Client, evt &vd.MessageCreate) {
             client.channel_message_send(evt.channel_id, 'Please enter a search!')
             return
         }
-        client.channel_message_send(evt.channel_id, '<https://lmgtfy.com/?q=$search>')
+        search_formatted := search.split(' ').join('%20')
+        client.channel_message_send(evt.channel_id, '<https://lmgtfy.com/?q=$search_formatted>')
     }
 
     if evt.content == '!joke' {
