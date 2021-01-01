@@ -11,6 +11,8 @@
 
 ## Installation
 
-* [Download and Install V](https://vlang.io/)
+* [Download](https://vlang.io/)
+* Create `v` symbolic link. (`./v symlink`)
+* `git clone https://github.com/Terisback/discord.v.git ~/.vmodules/discordv`
 * Define `BOT_TOKEN` environment variable
 * Run `v run codersbot.v`
