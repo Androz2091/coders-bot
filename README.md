@@ -8,3 +8,9 @@
 * `!ask` command that points to dontasktoask.com
 * `!lmg` command that sends a link with the search to lmgtfy.com
 * `!joke` command to get a random geek joke
+
+## Installation
+
+* [Download and Install V](https://vlang.io/)
+* Define `BOT_TOKEN` environment variable
+* Run `v run codersbot.v`
