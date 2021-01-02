@@ -77,6 +77,11 @@ fn on_message_create(mut client vd.Client, evt &vd.MessageCreate) {
         client.channel_message_send(evt.channel_id, '<@$evt.author.id> | $joke_content')
     }
 
+    if evt.content == '!mention' {
+        client.channel_message_delete(evt.channel_id, evt.id)
+        client.channel_message_send(evt.channel_id, 'Please do not ping people to get help. Ask your question and if the person is available, he or she will answer you (and if someone else knows, he or she will answer too). :wink:')
+    }
+
     if evt.content == '!ping' {
         client.channel_message_send(evt.channel_id, 'pong!') or { }
     }
