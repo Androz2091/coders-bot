@@ -27,15 +27,6 @@ fn main() {
 
 }
 
-fn on_guild_member_add(mut client vd.Client, evt &vd.GuildMemberAdd) {
-/*
-    gh_link := 'https://github.com/Androz2091'
-    androz_id := '422820341791064085'
-    english_msg := ':flag_gb: Welcome, <@$evt.user.id>! This is the AndrozDev server. This server is dedicated to help for projects created and/or maintained by <@$androz_id>. **Github**: <$gh_link> !'
-    french_msg := ':flag_fr: Bienvenue, <@$evt.user.id>! Ceci est le serveur AndrozDev. Ce serveur est dédié à l\'aide pour les packages créés et projets maintenu par <@$androz_id>. **Github**: **$gh_link** !'
-*/
-}
-
 fn on_message_create(mut client vd.Client, evt &vd.MessageCreate) {
 
     if evt.attachments.len == 1 {
