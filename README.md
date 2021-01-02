@@ -1,6 +1,6 @@
 # Coder's Bot
 
-🖥️ Discord BOT made for developers written in V.
+🖥️ Discord BOT made for developers written in [V](https://vlang.io).
 
 ## Features
 
