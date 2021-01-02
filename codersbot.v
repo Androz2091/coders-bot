@@ -11,6 +11,10 @@ struct JokeResponse {
     joke string
 }
 
+const (
+    prefix = '!'
+)
+
 fn main() {
 
 	token := os.getenv('BOT_TOKEN')
@@ -49,13 +53,21 @@ fn on_message_create(mut client vd.Client, evt &vd.MessageCreate) {
         }
     }
 
-    if evt.content == '!ask' {
+    if !evt.content.starts_with(prefix) {
+        return
+    }
+
+    mut arguments := evt.content.substr(1, evt.content.len).split(' ')
+    cmd_name := arguments[0]
+    arguments = arguments[1..arguments.len]
+
+    if cmd_name == 'ask' {
         client.channel_message_delete(evt.channel_id, evt.id)
         client.channel_message_send(evt.channel_id, 'https://dontasktoask.com/ :wink:')
     }
 
-    if evt.content.starts_with('!lmg') {
-        search := evt.content.substr(5, evt.content.len)
+    if cmd_name == 'lmg' {
+        search := arguments.join(' ')
         if search == '' {
             client.channel_message_send(evt.channel_id, 'Please enter a search!')
             return
@@ -64,7 +76,7 @@ fn on_message_create(mut client vd.Client, evt &vd.MessageCreate) {
         client.channel_message_send(evt.channel_id, '<https://lmgtfy.com/?q=$search_formatted>')
     }
 
-    if evt.content == '!joke' {
+    if cmd_name == 'joke' {
         joke_res := http.get('https://geek-jokes.sameerkumar.website/api?format=json') or {
             client.channel_message_send(evt.channel_id, 'API unreachable :confused:')
             return
@@ -77,12 +89,12 @@ fn on_message_create(mut client vd.Client, evt &vd.MessageCreate) {
         client.channel_message_send(evt.channel_id, '<@$evt.author.id> | $joke_content')
     }
 
-    if evt.content == '!mention' {
+    if cmd_name == 'mention' {
         client.channel_message_delete(evt.channel_id, evt.id)
         client.channel_message_send(evt.channel_id, 'Please do not ping people to get help. Ask your question and if the person is available, he or she will answer you (and if someone else knows, he or she will answer too). :wink:')
     }
 
-    if evt.content == '!ping' {
+    if cmd_name == '!ping' {
         client.channel_message_send(evt.channel_id, 'pong!')
     }
 
