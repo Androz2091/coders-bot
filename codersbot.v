@@ -22,7 +22,6 @@ fn main() {
 
     mut client := vd.new(token: token, intents: 515) ?
     client.on_message_create(on_message_create)
-    client.on_guild_member_add(on_guild_member_add)
     client.open() ?
 
 }
