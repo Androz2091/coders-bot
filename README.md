@@ -29,3 +29,12 @@
 * `git clone https://github.com/Androz2091/coders-bot.git`
 * `export BOT_TOKEN="939383093930"` (replace `939383093930` with your bot token)
 * `v run codersbot.v`
+
+### Keep alive using tmux
+
+* `v -os linux .`
+* `apt-get install tmux`
+* `tmux`
+* `./coders-bot`
+* CTRL + B
+* Type `d`
