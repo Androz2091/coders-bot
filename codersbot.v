@@ -25,9 +25,14 @@ fn main() {
     }
 
     mut client := vd.new(token: token, intents: 515) ?
+    client.on_ready(on_ready)
     client.on_message_create(on_message_create)
     client.open() ?
 
+}
+
+fn on_ready (mut client vd.Client, evt &vd.Ready) {
+    println('Ready!')
 }
 
 fn on_message_create(mut client vd.Client, evt &vd.MessageCreate) {
